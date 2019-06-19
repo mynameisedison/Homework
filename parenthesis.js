@@ -1,11 +1,13 @@
 let parenthesis = (string) =>{
 
-  let stack = [] //initializing stack for parenths
+  //initialize stack and result vars
+  let stack = []
   let result = ""
 
   if(string === "" || string === " ") return "error no input"
   //for loop to search through input string
   for (let i = 0; i < string.length; i++) {
+    //initialize last here because it needs to reset after each iteration
     let last = ""
     //if statement deciding to push onto stack if left parenth is detected
     if (string[i]==="(") stack.push(string[i])
