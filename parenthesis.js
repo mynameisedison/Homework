@@ -16,17 +16,7 @@ let parenthesis = (string) =>{
   }
   }
 
-
   //ternary deciding if stack length is 0 to return true because they all popped off, and false if anything is left inside
   stack.length === 0 ? result = true : result = false
   return result
 }
-
-console.log(parenthesis("(((()((((000)))))))"));
-
-// let string = ")))((("
-// let string = "((())"
-// let string =  "(())"
-// let string =  "()()()"
-// let string =  "(()())()()"
-// (((()((((000))))))
