@@ -3,36 +3,40 @@ let csvFileSearcher = (file) =>{
 
   let companies = []
 
-  function Company(user) {
-  this.user = user;
-}
+  //for loop searches through each user ID in file
+  for (let i = 0; i < array.length; i+=4) {
 
-  for (let i = 0; i < array.length; i++) {
-    if(!companies.includes(array[3])){
-      companies.push(array[3])
+    if(!companies.includes(array[i+3])){
+      companies.push(array[i+3])
+      // console.log(array.slice(i,i+4));
       //if new company is found, place in new array
-      eval("company" + i +"= array.splice(0,4)")
-      console.log(array);
+      let index = companies.indexOf(array[i+3])
+      eval("company" + index + "= array.slice(i,i+4)")
+      // console.log(company1);
     }
-    //else place object in same array as rest of company
-    //if company is already found, push onto that array
-    else{
-      // let bonus = array.slice(0,4)
-      // console.log(bonus);
-      // console.log(array);
-      let index = companies.indexOf(array[3])
-      eval("company" + index+".concat(array.splice(0,4))")
+    //else place entries into file that contains same insurance
+    else {
+      let index = companies.indexOf(array[i+3])
+      let bonus = array.slice(i,i+4)
+      let doubleBonus = eval("company" + index).concat(bonus)
+
+      eval("company" + index + "= doubleBonus")
     }
   }
 
 
-  return 
+  return company1
 
-  //separate by insurance company into their own file
+  //separate by insurance company into their own file/array
   //sort by last,first name A-Z
   //if any duplicate ID's are found in the same insurance company, delete
   //file data includes User ID, First and last name, version, and insurance company
 
 }
 
-console.log(csvFileSearcher(['1234','Edison Toole',2,'Farosh','2378','Peter Senn',5,'Naydra','1243','Amanda Wells',3,'Dinraal','2557','Alicia Canada',2,'Farosh','2249','James Spader',6,'Naydra']));
+console.log(csvFileSearcher([
+'1234','Edison Toole',2,'Farosh',
+'2378','Peter Senn',5,'Naydra',
+'1243','Amanda Wells',3,'Dinraal',
+'2557','Alicia Canada',2,'Farosh',
+'2249','James Spader',6,'Naydra']));
