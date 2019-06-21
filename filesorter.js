@@ -27,12 +27,15 @@ let csvFileSearcher = (file) =>{
   for (let i = 0; i < companies.length; i++) {
     let companyArray = eval("company" + i)
     //loop to get through each user ID and search for duplicates
+    let userIds = []
     for (let i = 0; i < companyArray.length; i+=4) {
-      // console.log(companyArray);
-      if(companyArray[i]===companyArray[i+4]){
-        // console.log(companyArray[i+2]);
-        companyArray[i+2]>companyArray[i+6] ? companyArray.splice(i+4,4):companyArray.splice(i,4)
+      // console.log(userIds);
+      if(userIds.includes(companyArray[i])){
+        // console.log(companyArray[i]);
+        let matchIndex = companyArray.indexOf(companyArray[i])
+        companyArray[i+2]>companyArray[matchIndex+2] ? companyArray.splice(matchIndex,4):companyArray.splice(i,4)
       }
+      else userIds.push(companyArray[i])
     }
   }
 
@@ -56,4 +59,5 @@ console.log(csvFileSearcher([
 '2557','Alicia Canada',2,'Farosh',
 '2249','James Spader',6,'Naydra',
 '1243','Amanda Downey',4,'Dinraal',
+'1234','Edison Boole',17,'Farosh',
 '2378','Peter Senn',5,'Farosh']));
