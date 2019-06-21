@@ -5,31 +5,46 @@ let csvFileSearcher = (file) =>{
 
   //for loop searches through each user ID in file
   for (let i = 0; i < array.length; i+=4) {
-
+    //if the list of companies does not include the company name, add it to the list
+    //and create array to hold CSV for that company
     if(!companies.includes(array[i+3])){
       companies.push(array[i+3])
-      // console.log(array.slice(i,i+4));
       //if new company is found, place in new array
       let index = companies.indexOf(array[i+3])
       eval("company" + index + "= array.slice(i,i+4)")
-      // console.log(company1);
     }
     //else place entries into file that contains same insurance
     else {
       let index = companies.indexOf(array[i+3])
       let bonus = array.slice(i,i+4)
-      let doubleBonus = eval("company" + index).concat(bonus)
-
-      eval("company" + index + "= doubleBonus")
+      let companyArray = eval("company" + index)
+      // console.log(companyArray);
+        let doubleBonus = companyArray.concat(bonus)
+        eval("company" + index + "= doubleBonus")
+    }
+  }
+  // loop to go through each company's array
+  for (let i = 0; i < companies.length; i++) {
+    let companyArray = eval("company" + i)
+    //loop to get through each user ID and search for duplicates
+    for (let i = 0; i < companyArray.length; i+=4) {
+      // console.log(companyArray);
+      if(companyArray[i]===companyArray[i+4]){
+        // console.log(companyArray[i+2]);
+        companyArray[i+2]>companyArray[i+6] ? companyArray.splice(i+4,4):companyArray.splice(i,4)
+      }
     }
   }
 
 
-  return company1
+  return(company0)
+  // return(company1)
+  // return(company2)
+  // return 0
 
   //separate by insurance company into their own file/array
   //sort by last,first name A-Z
-  //if any duplicate ID's are found in the same insurance company, delete
+  //if any duplicate ID's are found in the same insurance company, delete and keep higher version
   //file data includes User ID, First and last name, version, and insurance company
 
 }
@@ -39,4 +54,6 @@ console.log(csvFileSearcher([
 '2378','Peter Senn',5,'Naydra',
 '1243','Amanda Wells',3,'Dinraal',
 '2557','Alicia Canada',2,'Farosh',
-'2249','James Spader',6,'Naydra']));
+'2249','James Spader',6,'Naydra',
+'1243','Amanda Downey',4,'Dinraal',
+'2378','Peter Senn',5,'Farosh']));
