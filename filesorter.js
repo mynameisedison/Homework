@@ -1,6 +1,5 @@
-let csvFileSearcher = (file) =>{
-  let array = file
-
+let csvFileSearcher = (array) =>{
+  //array to count how many companies exist
   let companies = []
 
   //for loop searches through each user ID in file
@@ -18,32 +17,57 @@ let csvFileSearcher = (file) =>{
       let index = companies.indexOf(array[i+3])
       let bonus = array.slice(i,i+4)
       let companyArray = eval("company" + index)
-      // console.log(companyArray);
-        let doubleBonus = companyArray.concat(bonus)
-        eval("company" + index + "= doubleBonus")
+      //this was the best way I found to concat these dynamic arrays
+      let doubleBonus = companyArray.concat(bonus)
+      eval("company" + index + "= doubleBonus")
     }
   }
   // loop to go through each company's array
   for (let i = 0; i < companies.length; i++) {
+    //since my arrays are dynamically named, I must do this to manipulate them
     let companyArray = eval("company" + i)
-    //loop to get through each user ID and search for duplicates
+    //array to store userIDs so we can search through them to find a match
     let userIds = []
+    let names = []
+    //loop to get through each user ID and search for duplicates
     for (let i = 0; i < companyArray.length; i+=4) {
-      // console.log(userIds);
+      //if current userID matches one already in the array, we have a match
       if(userIds.includes(companyArray[i])){
-        // console.log(companyArray[i]);
         let matchIndex = companyArray.indexOf(companyArray[i])
+        //ternary deciding which set of items to get rid of by higher version number
         companyArray[i+2]>companyArray[matchIndex+2] ? companyArray.splice(matchIndex,4):companyArray.splice(i,4)
       }
       else userIds.push(companyArray[i])
     }
+    //loop to search names
+    for (let i = 1; i < companyArray.length; i+=4) {
+      //loop searches each character per name, stores last name
+      for (let j = 0; j < companyArray[i].length; j++) {
+        if(companyArray[i][j]===" "){
+          names.push(companyArray[i].slice([j+1]))
+        }
+      }
+      names.sort()
+      for (let j = 0; j < companyArray[i].length; j++) {
+        // if(companyArray[i][j]===" "){
+          let switchIndex = companyArray.indexOf(names[j])
+          // console.log(switchIndex);
+          //splice out all data for the person who doesnt match the changed name after names are sorted
+          //and splice back in data with matched Index 
+          // companyArray[i].splice(j+1,) === names[j] ? "":
+        // }
+      }
+      // console.log(names);
+    }
   }
 
 
-  return(company0)
+
+  // return(company0)
   // return(company1)
   // return(company2)
-  // return 0
+  return([company0,company1,company2])
+  return 0
 
   //separate by insurance company into their own file/array
   //sort by last,first name A-Z
