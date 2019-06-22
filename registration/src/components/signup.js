@@ -50,6 +50,7 @@ class SignUp extends Component {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
+                  onChange={e=>this.props.handleName(e)}
                   autoComplete="name"
                   name="name"
                   variant="outlined"
@@ -63,6 +64,7 @@ class SignUp extends Component {
 
               <Grid item xs={12}>
                 <TextField
+                  onChange={e=>this.props.handleEmail(e)}
                   variant="outlined"
                   required
                   fullWidth
@@ -74,6 +76,7 @@ class SignUp extends Component {
               </Grid>
               <Grid item xs={12}>
               <TextField
+                onChange={e=>this.props.handleEmail(e)}
                 variant="outlined"
                 required
                 fullWidth

@@ -1,3 +1,9 @@
+//This program searches a CSV file (an array in this case) filled with customer values
+//The values get sorted into a separate file/array according to what company they belong to
+//then, the arrays are checked for duplicate names/user IDs and only the higher version is kept
+//then, the arrays sort their valus by alphabetic name order and keeps all adjacent data correct.
+
+
 let csvFileSearcher = (array) =>{
   //array to count how many companies exist
   let companies = []
@@ -52,29 +58,17 @@ let csvFileSearcher = (array) =>{
     }
     // loop to search both companyArray names and sorted array of names and find what does not match
     for (let m=0, j = 1; j < companyArray.length; m++, j+=4) {
+      //if name in companyArray does not match alphabetized name in names, reorder companyArray to match names array
       if(companyArray[j]!==names[m]){
+        //infoPiece holds the spliced out data from unmatched alphabetic order
         let infoPiece = companyArray.splice(j-1,4)
+        //must splice info back in one by one because if it's done in one go, it puts an array inside the companyArray
         companyArray.splice(companyArray.indexOf(names[m])-1, 0, infoPiece[0] )
         companyArray.splice(companyArray.indexOf(names[m])-1, 0, infoPiece[1] )
         companyArray.splice(companyArray.indexOf(names[m])-1, 0, infoPiece[2] )
         companyArray.splice(companyArray.indexOf(names[m])-1, 0, infoPiece[3] )
       }
-      // for (let k = 0; k < companyArray[j].length; k++) {
-        // if(companyArray[j][k]===" "){
-          // if(companyArray[j].slice(k+1,) !== names[m]){
-            // console.log(companyArray[j].slice(k+1,));
-            // companyArray.splice(k-1,4)
-          // }
-        // }
-          // let switchIndex = companyArray.indexOf(names[j])
-          // console.log(switchIndex);
-          //splice out all data for the person who doesnt match the changed name after names are sorted
-          //and splice back in data with matched Index
-          // companyArray[i].splice(j+1,) === names[j] ? "":
-          // }
-      // }
     }
-    // console.log(names.sort());
   }
 
 

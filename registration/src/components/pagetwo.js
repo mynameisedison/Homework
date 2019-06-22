@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-class PageThree extends Component {
+class PageTwo extends Component {
   render(){
     return (
       <Container component="main" maxWidth="xs">
@@ -53,6 +53,7 @@ class PageThree extends Component {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
+                  onChange={e=>this.props.handleNpi(e)}
                   autoComplete="name"
                   name="name"
                   variant="outlined"
@@ -66,6 +67,7 @@ class PageThree extends Component {
 
               <Grid item xs={12}>
                 <TextField
+                  onChange={e=>this.props.handleAddress(e)}
                   variant="outlined"
                   required
                   fullWidth
@@ -77,6 +79,7 @@ class PageThree extends Component {
               </Grid>
               <Grid item xs={12}>
               <TextField
+                onChange={e=>this.props.handlePhone(e)}
                 variant="outlined"
                 required
                 fullWidth
@@ -88,6 +91,7 @@ class PageThree extends Component {
               </Grid>
             </Grid>
             <Button
+              onClick={this.props.handleNext1}
               type="submit"
               variant="contained"
               color="primary">
@@ -103,4 +107,4 @@ class PageThree extends Component {
     );
   }
 }
-export default PageThree;
+export default PageTwo;
