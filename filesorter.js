@@ -2,6 +2,7 @@
 //The values get sorted into a separate file/array according to what company they belong to
 //then, the arrays are checked for duplicate names/user IDs and only the higher version is kept
 //then, the arrays sort their valus by alphabetic name order and keeps all adjacent data correct.
+//could not get to sort by last name, so I left the full name and has it sort by that
 
 
 let csvFileSearcher = (array) =>{
@@ -16,12 +17,16 @@ let csvFileSearcher = (array) =>{
       companies.push(array[i+3])
       //if new company is found, place in new array
       let index = companies.indexOf(array[i+3])
+      //creating new arrays dynamically when new insurance companies are found, and adding that data entry to it
       eval("company" + index + "= array.slice(i,i+4)")
     }
     //else place entries into file that contains same insurance
     else {
+      //index stores companyArray value so we can access each new array
       let index = companies.indexOf(array[i+3])
+      //bonus takes the slice of data we want for an entire person's entry
       let bonus = array.slice(i,i+4)
+      //sets companyArray to the current dynamic new array
       let companyArray = eval("company" + index)
       //this was the best way I found to concat these dynamic arrays
       let doubleBonus = companyArray.concat(bonus)
@@ -45,16 +50,11 @@ let csvFileSearcher = (array) =>{
       }
       else userIds.push(companyArray[j])
     }
-    //loop to search names
+    //loop to search and sort full names
     for (let j = 1; j < companyArray.length; j+=4) {
-      //loop searches each character per name, stores full last name
-      // for (let k = 0; k < companyArray[j].length; k++) {
-        //if space is found, last name follows
-        // if(companyArray[j][k]===" "){
-          names.push(companyArray[j])
-          names.sort()
-        // }
-      // }
+      names.push(companyArray[j])
+      names.sort()
+
     }
     // loop to search both companyArray names and sorted array of names and find what does not match
     for (let m=0, j = 1; j < companyArray.length; m++, j+=4) {
@@ -70,20 +70,7 @@ let csvFileSearcher = (array) =>{
       }
     }
   }
-
-
-
-  // return(company0)
-  // return(company1)
-  // return(company2)
   return([company0,company1,company2])
-  return 0
-
-  //separate by insurance company into their own file/array
-  //sort by last,first name A-Z
-  //if any duplicate ID's are found in the same insurance company, delete and keep higher version
-  //file data includes User ID, First and last name, version, and insurance company
-
 }
 
 console.log(csvFileSearcher([

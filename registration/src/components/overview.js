@@ -55,7 +55,7 @@ class OverView extends Component {
 
           <Grid container spacing={2} alignItems="center" justify="flex-start">
             <Grid item xs={12}>
-            <List>
+            <List alignItems="flex-start">
               <ListItem>
                 Name: {this.props.name}
               </ListItem>
