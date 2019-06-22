@@ -2,7 +2,7 @@
 //The values get sorted into a separate file/array according to what company they belong to
 //then, the arrays are checked for duplicate names/user IDs and only the higher version is kept
 //then, the arrays sort their valus by alphabetic name order and keeps all adjacent data correct.
-//could not get to sort by last name, so I left the full name and has it sort by that
+//could not get to sort by last name, so it sorts by full name starting with first name
 
 
 let csvFileSearcher = (array) =>{
@@ -60,9 +60,9 @@ let csvFileSearcher = (array) =>{
     for (let m=0, j = 1; j < companyArray.length; m++, j+=4) {
       //if name in companyArray does not match alphabetized name in names, reorder companyArray to match names array
       if(companyArray[j]!==names[m]){
-        //infoPiece holds the spliced out data from unmatched alphabetic order
+        //infoPiece holds the spliced out data from item with unmatched alphabetic order
         let infoPiece = companyArray.splice(j-1,4)
-        //must splice info back in one by one because if it's done in one go, it puts an array inside the companyArray
+        //must splice info back in one by one because if it's done in one go, it puts an array of the info inside the companyArray
         companyArray.splice(companyArray.indexOf(names[m])-1, 0, infoPiece[0] )
         companyArray.splice(companyArray.indexOf(names[m])-1, 0, infoPiece[1] )
         companyArray.splice(companyArray.indexOf(names[m])-1, 0, infoPiece[2] )
