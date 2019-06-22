@@ -70,6 +70,7 @@ let csvFileSearcher = (array) =>{
       }
     }
   }
+  //same amount of arrays as companies, so we can return however many there are in reality
   return([company0,company1,company2])
 }
 
