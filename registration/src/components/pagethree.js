@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -26,6 +26,10 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     alignItems: 'center',
   },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(3),
@@ -35,13 +39,12 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-class SignUp extends Component {
+class PageThree extends Component {
   render(){
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div>
-
         <img href="https://www.availity.com" src={logo} className="App-logo" alt="logo" />
         <Typography component="h1" variant="h5">
           Sign up
@@ -55,8 +58,8 @@ class SignUp extends Component {
                   variant="outlined"
                   required
                   fullWidth
-                  id="name"
-                  label="Full Name"
+                  id="npiNumber"
+                  label="NPI Number"
                   autoFocus
                 />
               </Grid>
@@ -66,10 +69,10 @@ class SignUp extends Component {
                   variant="outlined"
                   required
                   fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
+                  id="businessAddress"
+                  label="Business Address"
+                  name="address"
+                  autoComplete="address"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -77,22 +80,20 @@ class SignUp extends Component {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
-                label="Confirm Email Address"
-                name="email"
-                autoComplete="email"
+                id="phone"
+                label="Phone Number"
+                name="phone"
+                autoComplete="phone"
               />
               </Grid>
             </Grid>
             <Button
-              onClick={this.props.handleNext}
               type="submit"
               variant="contained"
               color="primary">
               Next
             </Button>
             <Grid container justify="center">
-
             </Grid>
           </form>
         </div>
@@ -102,4 +103,4 @@ class SignUp extends Component {
     );
   }
 }
-export default SignUp;
+export default PageThree;

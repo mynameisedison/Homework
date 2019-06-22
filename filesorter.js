@@ -30,35 +30,51 @@ let csvFileSearcher = (array) =>{
     let userIds = []
     let names = []
     //loop to get through each user ID and search for duplicates
-    for (let i = 0; i < companyArray.length; i+=4) {
+    for (let j = 0; j < companyArray.length; j+=4) {
       //if current userID matches one already in the array, we have a match
-      if(userIds.includes(companyArray[i])){
-        let matchIndex = companyArray.indexOf(companyArray[i])
+      if(userIds.includes(companyArray[j])){
+        let matchIndex = companyArray.indexOf(companyArray[j])
         //ternary deciding which set of items to get rid of by higher version number
-        companyArray[i+2]>companyArray[matchIndex+2] ? companyArray.splice(matchIndex,4):companyArray.splice(i,4)
+        companyArray[j+2]>companyArray[matchIndex+2] ? companyArray.splice(matchIndex,4):companyArray.splice(j,4)
       }
-      else userIds.push(companyArray[i])
+      else userIds.push(companyArray[j])
     }
     //loop to search names
-    for (let i = 1; i < companyArray.length; i+=4) {
-      //loop searches each character per name, stores last name
-      for (let j = 0; j < companyArray[i].length; j++) {
-        if(companyArray[i][j]===" "){
-          names.push(companyArray[i].slice([j+1]))
-        }
+    for (let j = 1; j < companyArray.length; j+=4) {
+      //loop searches each character per name, stores full last name
+      // for (let k = 0; k < companyArray[j].length; k++) {
+        //if space is found, last name follows
+        // if(companyArray[j][k]===" "){
+          names.push(companyArray[j])
+          names.sort()
+        // }
+      // }
+    }
+    // loop to search both companyArray names and sorted array of names and find what does not match
+    for (let m=0, j = 1; j < companyArray.length; m++, j+=4) {
+      if(companyArray[j]!==names[m]){
+        let infoPiece = companyArray.splice(j-1,4)
+        companyArray.splice(companyArray.indexOf(names[m])-1, 0, infoPiece[0] )
+        companyArray.splice(companyArray.indexOf(names[m])-1, 0, infoPiece[1] )
+        companyArray.splice(companyArray.indexOf(names[m])-1, 0, infoPiece[2] )
+        companyArray.splice(companyArray.indexOf(names[m])-1, 0, infoPiece[3] )
       }
-      names.sort()
-      for (let j = 0; j < companyArray[i].length; j++) {
-        // if(companyArray[i][j]===" "){
-          let switchIndex = companyArray.indexOf(names[j])
+      // for (let k = 0; k < companyArray[j].length; k++) {
+        // if(companyArray[j][k]===" "){
+          // if(companyArray[j].slice(k+1,) !== names[m]){
+            // console.log(companyArray[j].slice(k+1,));
+            // companyArray.splice(k-1,4)
+          // }
+        // }
+          // let switchIndex = companyArray.indexOf(names[j])
           // console.log(switchIndex);
           //splice out all data for the person who doesnt match the changed name after names are sorted
-          //and splice back in data with matched Index 
+          //and splice back in data with matched Index
           // companyArray[i].splice(j+1,) === names[j] ? "":
-        // }
-      }
-      // console.log(names);
+          // }
+      // }
     }
+    // console.log(names.sort());
   }
 
 

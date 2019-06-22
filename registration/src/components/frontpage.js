@@ -22,7 +22,7 @@ class FrontPage extends Component {
           </Grid>
           <Grid item>
           <Button
-            onClick={this.props.handleSubmit}
+            onClick={this.props.handleRegisterClick}
             style={{backgroundColor: "#ff6f00"}}
             variant="contained" color="primary" className={Button}>
               Register
