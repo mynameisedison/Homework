@@ -3,6 +3,7 @@ import FrontPage from './components/frontpage'
 import SignUp from './components/signup'
 import PageTwo from './components/pagetwo'
 import OverView from './components/overview'
+import Thanks from './components/thanks'
 import { makeStyles } from '@material-ui/core/styles';
 import logo from './availitylogo.jpg';
 import './App.css';
@@ -18,6 +19,7 @@ class App extends Component{
     this.handlePhone = this.handlePhone.bind(this);
     this.handleNpi = this.handleNpi.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
 
     this.handleRegisterClick = this.handleRegisterClick.bind(this);
@@ -55,16 +57,16 @@ class App extends Component{
   }
 
   handleRegisterClick(event){
-    this.setState({pageZero: null, pageOne: true});
+    this.setState({pageZero:null, pageOne: true});
   }
   handleNext(event){
-    this.setState({pageOne: null, pageTwo:true})
+    this.setState({pageOne:null, pageTwo:true})
   }
   handleNext1(event){
-    this.setState({pageTwo: null, pageThree:true})
+    this.setState({pageTwo:null, pageThree:true})
   }
   handleSubmit(event){
-    this.setState({submitted:true})
+    this.setState({pageThree:null, submitted:true})
   }
   render(){
 
@@ -87,6 +89,9 @@ class App extends Component{
                         businessAddress={this.state.businessAddress}
                         phone={this.state.phone}
                         handleSubmit={this.handleSubmit}/>
+    }
+    else if(this.state.submitted){
+      thing = <Thanks/>
     }
     else thing = <FrontPage handleRegisterClick={this.handleRegisterClick}/>
 

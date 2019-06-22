@@ -45,31 +45,34 @@ const useStyles = makeStyles(theme => ({
 class OverView extends Component {
   render(){
     return (
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="sm">
         <CssBaseline />
         <div>
-        <img href="https://www.availity.com" src={logo} className="App-logo" alt="logo" />
+          <img href="https://www.availity.com" src={logo} className="App-logo" alt="logo" />
           <Typography component="h1" variant="h5">
             Sign Up
           </Typography>
 
-          <List>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
+          <Grid container spacing={2} alignItems="center" justify="flex-start">
+            <Grid item xs={12}>
+            <List>
+              <ListItem>
                 Name: {this.props.name}
-              </Grid>
-              <Grid item xs={12}>
+              </ListItem>
+              <ListItem>
                 Phone Number: {this.props.phone}
-              </Grid>
-              <Grid item xs={12}>
+              </ListItem>
+              <ListItem>
                 Email: {this.props.email}
-              </Grid>
-              <Grid item xs={12}>
+              </ListItem>
+              <ListItem>
                 Address: {this.props.businessAddress}
-              </Grid>
-              <Grid item xs={12}>
+              </ListItem>
+              <ListItem>
               NPI Number: {this.props.npiNumber}
-              </Grid>
+              </ListItem>
+            </List>
+            </Grid>
             </Grid>
             <Typography component="h1" variant="h6">
               Everything look good?
@@ -81,7 +84,6 @@ class OverView extends Component {
               color="primary">
               Submit
             </Button>
-          </List>
         </div>
       </Container>
     );
