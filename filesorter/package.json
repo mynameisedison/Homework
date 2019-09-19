@@ -1,0 +1,25 @@
+{
+  "name": "availityhomework",
+  "version": "1.0.0",
+  "description": "Full Stack Technical Assignment for Availity",
+  "main": "filesorter.js",
+  "dependencies": {
+    "jquery": "^3.4.1"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mynameisedison/Availity-Homework.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mynameisedison/Availity-Homework/issues"
+  },
+  "homepage": "https://github.com/mynameisedison/Availity-Homework#readme"
+}
