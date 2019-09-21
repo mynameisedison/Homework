@@ -8,6 +8,7 @@
 let csvFileSearcher = (array) =>{
   //array to count how many companies exist
   let companies = []
+  let result=[]
 
   //for loop searches through each user ID in file
   for (let i = 0; i < array.length; i+=4) {
@@ -50,11 +51,10 @@ let csvFileSearcher = (array) =>{
       }
       else userIds.push(companyArray[j])
     }
-    //loop to search and sort full names
+    //loop to search and sort last names
     for (let j = 1; j < companyArray.length; j+=4) {
       names.push(companyArray[j])
       names.sort()
-
     }
     // loop to search both companyArray names and sorted array of names and find what does not match
     for (let m=0, j = 1; j < companyArray.length; m++, j+=4) {
@@ -69,10 +69,12 @@ let csvFileSearcher = (array) =>{
         companyArray.splice(companyArray.indexOf(names[m])-1, 0, infoPiece[3] )
       }
     }
+    //same amount of arrays as companies, so we can return however many there are in reality
+    result.push(companyArray);
   }
-  //same amount of arrays as companies, so we can return however many there are in reality
-  return([company0,company1,company2])
+  return result
 }
+
 
 let sampleData = ['1234','Edison Toole',2,'Farosh',
 '2378','Peter Senn',5,'Naydra',
@@ -82,5 +84,7 @@ let sampleData = ['1234','Edison Toole',2,'Farosh',
 '1243','Amanda Downey',4,'Dinraal',
 '1234','Edison Boole',17,'Farosh',
 '2378','Peter Senn',5,'Farosh']
+
+console.log(csvFileSearcher(['1234','Edison Toole',2,'Farosh','2557','Alicia Canada',3,'Farosh']))
 
 module.exports = { csvFileSearcher }
