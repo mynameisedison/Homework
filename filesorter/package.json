@@ -4,6 +4,7 @@
   "description": "Full Stack Technical Assignment for Availity",
   "main": "filesorter.js",
   "dependencies": {
+    "csvtojson": "^2.0.10",
     "jquery": "^3.4.1"
   },
   "devDependencies": {
