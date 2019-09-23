@@ -1,9 +1,9 @@
 # Homework
 
 Full Stack Technical Assignment for Availity
-``
-Questions 1-3 in Short Answer Qs word doc
-4 is in parenthesis file
-5 is in filesorter file
-6 is in registration file
-``
+```
+Answers to questions 1-3 in Short Answer Qs word doc
+Parenthesis Validator is in "parenthesis" file
+CSV File Sorter is in "filesorter" file
+React registration page is in "registration" file
+```
