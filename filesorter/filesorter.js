@@ -9,7 +9,7 @@ let csvFileSearcher = (array) =>{
   //array to count how many companies exist
   let companies = []
   let result=[]
-
+  
   //for loop searches through each user ID in file
   for (let i = 0; i < array.length; i+=4) {
     //if the list of companies does not include the company name, add it to the list
