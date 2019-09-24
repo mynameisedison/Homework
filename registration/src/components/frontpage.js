@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import logo from '../availitylogo.jpg';
-import '../App.css';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
+import React, { Component } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import logo from '../availitylogo.jpg'
+import '../App.css'
+import Button from '@material-ui/core/Button'
+import Grid from '@material-ui/core/Grid'
+import Link from '@material-ui/core/Link'
 
 
 class FrontPage extends Component {
@@ -38,4 +38,4 @@ class FrontPage extends Component {
     );
   }
 }
-export default FrontPage;
+export default FrontPage
