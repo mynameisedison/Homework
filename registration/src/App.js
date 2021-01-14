@@ -21,7 +21,6 @@ class App extends Component{
     this.handleEmail = this.handleEmail.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
-
     this.handleRegisterClick = this.handleRegisterClick.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handleNext1 = this.handleNext1.bind(this);

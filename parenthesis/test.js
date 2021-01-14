@@ -12,7 +12,10 @@ it('should return false', () => {
   assert.equal(parenthesis.parenthesis("Yeah I'm gonna need those (TPS) Reports by monday thanks()))"),false)
 })
 it('should return error', () => {
-  assert.equal(parenthesis.parenthesis(" "),"error no input")
+  assert.equal(parenthesis.parenthesis(" "),"ERROR: no input")
+})
+it('should return error', () => {
+  assert.equal(parenthesis.parenthesis(""),"ERROR: no input")
 })
 it('should return false', () => {
   assert.equal(parenthesis.parenthesis("(()))("),false)
