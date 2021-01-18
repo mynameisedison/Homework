@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import FrontPage from './components/frontpage'
-import SignUp from './components/signup'
-import PageTwo from './components/pagetwo'
-import OverView from './components/overview'
-import Thanks from './components/thanks'
-import { makeStyles } from '@material-ui/core/styles';
-import logo from './availitylogo.jpg';
 import './App.css';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
+import Welcome from './components/welcome'
+import SignUp from './components/signup'
+import Overview from './components/overview'
+import Thanks from './components/thanks'
+import Header from './components/header'
+import './App.css';
 
 class App extends Component{
   constructor(props) {
@@ -17,13 +14,12 @@ class App extends Component{
     this.handleNpi = this.handleNpi.bind(this);
     this.handleAddress = this.handleAddress.bind(this);
     this.handlePhone = this.handlePhone.bind(this);
-    this.handleNpi = this.handleNpi.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
 
     this.handleRegisterClick = this.handleRegisterClick.bind(this);
     this.handleNext = this.handleNext.bind(this);
-    this.handleNext1 = this.handleNext1.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleRestart = this.handleRestart.bind(this);
 
     this.state={
       fullName:"",
@@ -31,14 +27,15 @@ class App extends Component{
       businessAddress:"",
       phone:"",
       email:"",
-      pageZero: true,
-      pageOne: false,
-      pageTwo: false,
-      pageThree: false,
-      pageFour: false,
-      submitted:false
+      confirmEmail:"",
+
+      welcome: true,
+      signup: false,
+      overview: false,
+      submitted: false,
     }
   }
+
   handleName(event){
     this.setState({fullName: event.target.value})
   }
@@ -54,35 +51,37 @@ class App extends Component{
   handleEmail(event){
     this.setState({email: event.target.value})
   }
-
+  handleEmailConfirm(event){
+    this.setState({confirmEmail: event.target.value})
+    if (this.state.email !== this.state.confirmEmail) {
+      console.log("ay that's bad!")
+    }
+  }
   handleRegisterClick(event){
-    this.setState({pageZero:null, pageOne: true});
+    this.setState({welcome:null, signup: true});
   }
-  handleNext(event){
-    this.setState({pageOne:null, pageTwo:true})
-  }
-  handleNext1(event){
-    this.setState({pageTwo:null, pageThree:true})
+  handleNext(event) {
+    this.setState({signup:null, overview:true});
   }
   handleSubmit(event){
-    this.setState({pageThree:null, submitted:true})
+    this.setState({overview:null, submitted:true});
+  }
+  handleRestart(event){
+    this.setState({submitted:null, welcome:true});
   }
   render(){
 
-    let thing
-    if(this.state.pageOne){
-      thing = <SignUp handleNext={this.handleNext}
-                      handleName={this.handleName}
-                      handleEmail={this.handleEmail}/>
+    let currentPage
+    if(this.state.signup){
+      currentPage = <SignUp handleNext={this.handleNext}
+                      handleName = {this.handleName}
+                      handleEmail = {this.handleEmail}
+                      handleNpi = {this.handleNpi}
+                      handleAddress = {this.handleAddress}
+                      handlePhone = {this.handlePhone}/>
     }
-    else if(this.state.pageTwo){
-      thing = <PageTwo handleNext1={this.handleNext1}
-                       handleNpi={this.handleNpi}
-                       handleAddress={this.handleAddress}
-                       handlePhone={this.handlePhone}/>
-    }
-    else if(this.state.pageThree){
-      thing = <OverView name={this.state.fullName}
+    else if(this.state.overview){
+      currentPage = <Overview name={this.state.fullName}
                         npiNumber={this.state.npiNumber}
                         email={this.state.email}
                         businessAddress={this.state.businessAddress}
@@ -90,15 +89,14 @@ class App extends Component{
                         handleSubmit={this.handleSubmit}/>
     }
     else if(this.state.submitted){
-      thing = <Thanks/>
+      currentPage = <Thanks handleRestart={this.handleRestart}/>
     }
-    else thing = <FrontPage handleRegisterClick={this.handleRegisterClick}/>
+    else currentPage = <Welcome handleRegisterClick={this.handleRegisterClick}/>
 
     return (
       <div className="App">
-        <header className="App-header">
-          {thing}
-        </header>
+          <Header/>
+        {currentPage}
       </div>
     );
   }
